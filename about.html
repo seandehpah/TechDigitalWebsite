@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Prodigy Tech & Digital Services</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-12">
+        <section id="about-us" class="mb-16 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-10 text-primary">About Us</h2>
+                <p class="text-xl text-gray-300 mb-4">
+                    Prodigy Tech & Digital Services is a forward-thinking technology and digital solutions company based in Lagos, Nigeria.
+                </p>
+                <p class="text-xl text-gray-300">
+                    We help individuals, startups, and businesses build a strong digital footprint through professional web development, digital marketing, creative content, and publishing services.
+                </p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
+                <p class="text-gray-300 mb-6">To provide cutting-edge digital services that help businesses thrive in an increasingly online world.</p>
+                <img src="http://static.photos/office/1024x576/3" alt="Our team" class="rounded-xl shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Core Values</h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i data-feather="zap" class="text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Innovation</h3>
+                            <p class="text-gray-400">We stay ahead of digital trends to deliver future-proof solutions.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i data-feather="heart" class="text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Integrity</h3>
+                            <p class="text-gray-400">We build trust through transparency and ethical practices.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i data-feather="users" class="text-purple-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Collaboration</h3>
+                            <p class="text-gray-400">We work closely with clients to achieve shared success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 id="our-team" class="text-3xl font-bold text-center mb-10 text-primary">Meet Our Leadership Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <img src="http://static.photos/people/400x400/1" alt="Oluwaseun Adesile" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Oluwaseun Adesile</h3>
+                    <p class="text-primary mb-2">CEO & Founder</p>
+                    <p class="text-gray-400">IT and Digital strategy expert with 10+ years experience</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <img src="http://static.photos/people/400x400/2" alt="Oluwatobiloba Oyewole" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Oluwatobiloba Oyewole</h3>
+                    <p class="text-secondary mb-2">Branding Specialist</p>
+                    <p class="text-gray-400">Branding and Book Publishing Specialist</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <img src="http://static.photos/people/400x400/3" alt="Ayomide Isiah Adesile" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Ayomide Isiaih Adesile</h3>
+                    <p class="text-purple-500 mb-2">Tech Lead</p>
+                    <p class="text-gray-400">Full-stack developer and solutions architect</p>
+                </div>
+</div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>

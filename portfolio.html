@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio | Prodigy Tech & Digital Services</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6', // Blue
+                        secondary: '#10B981', // Green
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-12">
+        
+        <section class="mb-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">Our Portfolio</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Explore our recent projects and see how we've helped businesses succeed across various digital solutions.</p>
+        </section>
+
+        <section class="mb-12">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active px-4 py-2 rounded-lg bg-primary text-white font-medium transition" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium transition" data-filter="web">Web & App</button>
+                <button class="filter-btn px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium transition" data-filter="marketing">Marketing</button>
+                <button class="filter-btn px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium transition" data-filter="creative">Creative & Publishing</button>
+                <button class="filter-btn px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium transition" data-filter="setup">Business Setup</button>
+            </div>
+        </section>
+
+        <section id="portfolio-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="portfolio-item bg-gray-800 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300" data-category="web">
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-primary mb-3 flex items-center gap-2">
+                            <i data-feather="code" class="w-4 h-4"></i>Web & App Solutions
+                        </span>
+                        <h3 class="text-2xl font-bold mb-2">E-commerce Platform (B2C)</h3>
+                        <p class="text-gray-400 mb-4">A complete full-stack solution for digital product sales and subscription management.</p>
+                        
+                        <div class="text-sm space-y-2 mb-4">
+                            <p><strong class="text-gray-300">Tech Focus:</strong> React, Node.js, Stripe Integration</p>
+                            <p><strong class="text-gray-300">Deployment:</strong> AWS, Vercel</p>
+                        </div>
+                        <a href="web-development.html" class="text-primary hover:text-blue-400 font-semibold flex items-center gap-1 transition">View Case Study <i data-feather="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item bg-gray-800 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300" data-category="web">
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-primary mb-3 flex items-center gap-2">
+                            <i data-feather="code" class="w-4 h-4"></i>Web & App Solutions
+                        </span>
+                        <h3 class="text-2xl font-bold mb-2">Internal Operations Dashboard</h3>
+                        <p class="text-gray-400 mb-4">Developed a secure, internal tool to manage client data and project workflows efficiently.</p>
+                        
+                        <div class="text-sm space-y-2 mb-4">
+                            <p><strong class="text-gray-300">Tech Focus:</strong> Python/Django, PostgreSQL, API integration</p>
+                            <p><strong class="text-gray-300">Deployment:</strong> Secure VPN, Private Cloud</p>
+                        </div>
+                        <a href="web-development.html" class="text-primary hover:text-blue-400 font-semibold flex items-center gap-1 transition">View Case Study <i data-feather="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item bg-gray-800 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300" data-category="marketing">
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-secondary mb-3 flex items-center gap-2">
+                            <i data-feather="bar-chart-2" class="w-4 h-4"></i>Digital Marketing
+                        </span>
+                        <h3 class="text-2xl font-bold mb-2">SaaS Lead Generation Campaign</h3>
+                        <p class="text-gray-400 mb-4">Developed an integrated campaign to drive trial sign-ups for a niche B2B software.</p>
+                        
+                        <div class="text-sm space-y-2 mb-4">
+                            <p><strong class="text-gray-300">Focus:</strong> SEO, Paid Search (Google Ads), Content Strategy</p>
+                            <p><strong class="text-gray-300">Deployment:</strong> HubSpot CRM, Custom Landing Pages</p>
+                        </div>
+                        <a href="digital-marketing.html" class="text-secondary hover:text-green-400 font-semibold flex items-center gap-1 transition">View Campaign Results <i data-feather="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item bg-gray-800 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300" data-category="creative">
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-purple-500 mb-3 flex items-center gap-2">
+                            <i data-feather="edit-3" class="w-4 h-4"></i>Creative & Publishing
+                        </span>
+                        <h3 class="text-2xl font-bold mb-2">Global Book Launch & Branding</h3>
+                        <p class="text-gray-400 mb-4">Cover design, interior formatting, and setup for an international self-help author.</p>
+                        
+                        <div class="text-sm space-y-2 mb-4">
+                            <p><strong class="text-gray-300">Tech Focus:</strong> Professional Typesetting, Print-on-Demand</p>
+                            <p><strong class="text-gray-300">Deployment:</strong> Amazon KDP, IngramSpark</p>
+                        </div>
+                        <a href="book-publishing.html" class="text-purple-500 hover:text-purple-400 font-semibold flex items-center gap-1 transition">View Publishing Details <i data-feather="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item bg-gray-800 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300" data-category="creative">
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-purple-500 mb-3 flex items-center gap-2">
+                            <i data-feather="edit-3" class="w-4 h-4"></i>Creative & Branding
+                        </span>
+                        <h3 class="text-2xl font-bold mb-2">Complete Corporate Rebranding</h3>
+                        <p class="text-gray-400 mb-4">A full package including a new logo, visual guidelines, and marketing collateral templates.</p>
+                        
+                        <div class="text-sm space-y-2 mb-4">
+                            <p><strong class="text-gray-300">Focus:</strong> Visual Identity, Brand Strategy, UI/UX Principles</p>
+                            <p><strong class="text-gray-300">Deployment:</strong> Digital Style Guide, Print-Ready Assets</p>
+                        </div>
+                        <a href="book-publishing.html" class="text-purple-500 hover:text-purple-400 font-semibold flex items-center gap-1 transition">View Case Study <i data-feather="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item bg-gray-800 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300" data-category="setup">
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-yellow-500 mb-3 flex items-center gap-2">
+                            <i data-feather="settings" class="w-4 h-4"></i>Business Setup
+                        </span>
+                        <h3 class="text-2xl font-bold mb-2">SME Digital Ecosystem Setup</h3>
+                        <p class="text-gray-400 mb-4">A complete solution providing a small firm with essential, integrated digital collaboration tools.</p>
+                        
+                        <div class="text-sm space-y-2 mb-4">
+                            <p><strong class="text-gray-300">Focus:</strong> Cloud Storage, Team Communication, Task Management</p>
+                            <p><strong class="text-gray-300">Deployment:</strong> Google Workspace, Asana, Cloud Backups</p>
+                        </div>
+                        <a href="business-solutions.html" class="text-yellow-500 hover:text-yellow-400 font-semibold flex items-center gap-1 transition">View Setup Details <i data-feather="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 md:p-12 mt-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 text-white">Ready to Transform Your Digital Presence?</h2>
+                <p class="text-xl mb-6 text-gray-100">Let's discuss how we can help grow your business online.</p>
+                <a href="contact.html" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold text-lg inline-block transition">Contact Us Today</a>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        // Portfolio Filtering Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const gridContainer = document.querySelector('.grid');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                // Update active state on buttons
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-primary', 'text-white'));
+                button.classList.add('active', 'bg-primary', 'text-white');
+                button.classList.remove('bg-gray-800', 'text-gray-300');
+
+                // Filter items
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                        // Use a class to trigger CSS animation if needed
+                        item.classList.add('fade-in'); 
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('fade-in');
+                    }
+                });
+
+                // Re-initialize feather icons after DOM manipulation
+                feather.replace();
+            });
+        });
+
+        // Set initial active state and filter styles for all other buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            filterButtons.forEach(btn => {
+                if (!btn.classList.contains('active')) {
+                    btn.classList.add('bg-gray-800', 'text-gray-300');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

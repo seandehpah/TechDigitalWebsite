@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Prodigy Tech & Digital Services</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-12">
+        <section class="mb-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">Get In Touch</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">We'd love to hear from you. Reach out to start your digital journey.</p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-6">Send Us a Message</h2>
+                <p class="text-gray-400 mb-6">Fill out the form below and we will get back to you within one business day.</p>
+                
+                <form action="mailto:hello@prodigytechdigital.com.ng" method="POST" enctype="text/plain" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                        <input type="text" id="name" name="Name" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition placeholder-gray-500" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                        <input type="email" id="email" name="Email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition placeholder-gray-500" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service of Interest</label>
+                        <select id="service" name="Service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition">
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Web & App Solutions">Web & App Solutions</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Creative & Publishing">Creative & Publishing</option>
+                            <option value="Business Digital Setup">Business Digital Setup</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
+                        <textarea id="message" name="Message" rows="5" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition placeholder-gray-500" placeholder="Tell us about your project or question"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition">
+                        Submit Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-feather="mail" class="text-primary"></i> Email Us</h2>
+                    <a href="mailto:hello@prodigytechdigital.com.ng" class="text-xl text-gray-300 hover:text-primary transition">hello@prodigytechdigital.com.ng</a>
+                    <p class="text-gray-400 mt-2">Best for detailed inquiries and proposal requests.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-feather="phone" class="text-secondary"></i> Call/WhatsApp</h2>
+                    <a href="tel:+2348109881237" class="text-xl text-gray-300 hover:text-secondary transition">+234 810 988 1237</a>
+                    <p class="text-gray-400 mt-2">Available for urgent discussions during business hours.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-feather="map-pin" class="text-purple-500"></i> Location & Hours</h2>
+                    <p class="text-xl font-medium text-gray-300 mb-4">Lagos, Nigeria</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Monday - Friday</span>
+                            <span class="font-medium">9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Saturday</span>
+                            <span class="font-medium">10:00 AM - 3:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Sunday</span>
+                            <span class="font-medium">Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-center">Find Us</h2>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7171458908753!2d3.3765100000000003!3d6.564590000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8e4e75d048d5%3A0x67a911a37c006771!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>

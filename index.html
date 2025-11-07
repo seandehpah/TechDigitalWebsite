@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodigy Tech & Digital Services</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script> 
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-8">
+        <section class="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
+            <div class="md:w-1/2 space-y-6">
+                <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Empowering Digital Growth</h1>
+                <p class="text-xl text-gray-300">From website design to digital marketing, publishing, and brand management — we help you grow your business and presence online.</p>
+                <div class="flex gap-4">
+                    <a href="#contact" class="bg-primary hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-medium transition">Get Started</a>
+                </div>
+</div>
+            <div class="md:w-1/2">
+                <img src="http://static.photos/technology/1024x576/1" alt="Digital services" class="rounded-xl shadow-2xl">
+            </div>
+        </section>
+
+        <section id="services" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Our Digital Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800 p-6 rounded-xl hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="code" class="text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Web & App Solutions</h3>
+                    <p class="text-gray-400">Empowering businesses with functional, modern digital platforms.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="bar-chart-2" class="text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Digital Marketing</h3>
+                    <p class="text-gray-400">Strategies that drive growth, engagement, and conversions.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="edit-3" class="text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Creative & Publishing</h3>
+                    <p class="text-gray-400">Helping brands tell their stories creatively and effectively.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-yellow-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="settings" class="text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Business Setup</h3>
+                    <p class="text-gray-400">Equipping SMEs with essential digital tools for efficiency.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Why Choose Prodigy Tech</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <img src="http://static.photos/office/1024x576/2" alt="Team working" class="rounded-xl shadow-lg">
+                </div>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i data-feather="zap" class="text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Innovation</h3>
+                            <p class="text-gray-400">We think ahead to deliver modern, scalable solutions.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i data-feather="award" class="text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Excellence</h3>
+                            <p class="text-gray-400">We maintain the highest quality in all we deliver.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i data-feather="users" class="text-purple-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Customer Success</h3>
+                            <p class="text-gray-400">We grow only when our clients succeed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="http://static.photos/people/200x200/1" alt="Client" class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-semibold">Afolabi John</h4>
+                            <p class="text-sm text-gray-400">CEO, TechCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Prodigy Tech transformed our online presence. Their web development team delivered beyond our expectations."</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="http://static.photos/people/200x200/2" alt="Client" class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-semibold">Kemi Bashorun</h4>
+                            <p class="text-sm text-gray-400">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Their digital marketing strategies increased our conversions by 40% in just three months!"</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="http://static.photos/people/200x200/3" alt="Client" class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-semibold">Michael Apara</h4>
+                            <p class="text-sm text-gray-400">Author & Entrepreneur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The publishing team helped me launch my book globally with a professional brand presence."</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 md:p-12 mb-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Digital Presence?</h2>
+                <p class="text-xl mb-6">Let's discuss how we can help grow your business online.</p>
+                <a href="contact.html" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold text-lg inline-block transition">Contact Us Today</a>
+            </div>
+        </section>
+    </main>
+
+    <section class="mb-16 text-center">
+            <h2 class="text-3xl font-bold mb-8">Connect with Us</h2>
+            <div class="flex justify-center gap-6 text-gray-400">
+                <a href="https://facebook.com/prodigytech" target="_blank" aria-label="Facebook" class="hover:text-primary transition">
+                    <i data-feather="facebook" class="w-8 h-8"></i>
+                </a>
+                <a href="https://twitter.com/prodigytech" target="_blank" aria-label="Twitter/X" class="hover:text-primary transition">
+                    <i data-feather="twitter" class="w-8 h-8"></i>
+                </a>
+                <a href="https://linkedin.com/company/prodigytech" target="_blank" aria-label="LinkedIn" class="hover:text-primary transition">
+                    <i data-feather="linkedin" class="w-8 h-8"></i>
+                </a>
+                <a href="https://instagram.com/prodigytech" target="_blank" aria-label="Instagram" class="hover:text-primary transition">
+                    <i data-feather="instagram" class="w-8 h-8"></i>
+                </a>
+            </div>
+        </section>
+        
+    </main>
+
+    <custom-footer></custom-footer>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        feather.replace();
+        
+        // Set active nav link based on current page
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('custom-navbar a');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === currentPath || 
+              (currentPath === '/' && link.getAttribute('href') === '/index.html')) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>

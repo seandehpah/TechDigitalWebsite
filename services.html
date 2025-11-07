@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Prodigy Tech & Digital Services</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6', // Blue
+                        secondary: '#10B981', // Green
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-12">
+        <section class="mb-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">Our Core Digital Services</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">We offer comprehensive digital solutions, from technical development to strategic growth and brand management.</p>
+        </section>
+
+        <section class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="code" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-3 text-white">Web & App Development</h2>
+                    <p class="text-gray-400 mb-4">Building custom, scalable, and secure websites, mobile apps, and business systems.</p>
+                    <a href="web-development.html" class="text-primary hover:text-blue-400 font-semibold flex items-center gap-1 transition">
+                        Learn More <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="bar-chart-2" class="text-secondary w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-3 text-white">Digital Marketing</h2>
+                    <p class="text-gray-400 mb-4">Strategic SEO, PPC campaigns, and content marketing to drive traffic and increase conversions.</p>
+                    <a href="digital-marketing.html" class="text-secondary hover:text-green-400 font-semibold flex items-center gap-1 transition">
+                        Learn More <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="edit-3" class="text-purple-500 w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-3 text-white">Creative & Publishing</h2>
+                    <p class="text-gray-400 mb-4">Professional book publishing, branding, logo design, and visual identity services.</p>
+                    <a href="creative-projects.html" class="text-purple-500 hover:text-purple-400 font-semibold flex items-center gap-1 transition">
+                        Learn More <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-yellow-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="settings" class="text-yellow-500 w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-3 text-white">Business Solutions</h2>
+                    <p class="text-gray-400 mb-4">Digital infrastructure setup, cloud collaboration, IT consulting, and security solutions.</p>
+                    <a href="business-solutions.html" class="text-yellow-500 hover:text-yellow-400 font-semibold flex items-center gap-1 transition">
+                        Learn More <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10 text-primary">Our Seamless Process</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Discovery</h3>
+                    <p class="text-gray-400">Understanding your business goals and challenges</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-secondary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-secondary font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Strategy</h3>
+                    <p class="text-gray-400">Developing a custom digital roadmap</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-purple-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-500 font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Execution</h3>
+                    <p class="text-gray-400">Implementing the solution with precision</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="w-16 h-16 bg-yellow-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-yellow-500 font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Growth</h3>
+                    <p class="text-gray-400">Ongoing support and optimization</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 md:p-12">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 text-white">Ready to Get Started?</h2>
+                <p class="text-xl mb-6 text-gray-100">Let's discuss how we can help grow your business.</p>
+                <a href="contact.html" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold text-lg inline-block transition">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>
