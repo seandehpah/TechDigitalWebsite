@@ -4,98 +4,314 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Prodigy Tech & Digital Services</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Learn about Prodigy Tech - our mission, vision, core values, and the team behind innovative digital solutions for businesses in Lagos, Nigeria.">
+    <link rel="icon" href="/images/icon.png" type="image/png">
+    
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-900 text-gray-100">
     <custom-navbar></custom-navbar>
     
     <main class="container mx-auto px-4 py-12">
-        <section id="about-us" class="mb-16 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-10 text-primary">About Us</h2>
-                <p class="text-xl text-gray-300 mb-4">
-                    Prodigy Tech & Digital Services is a forward-thinking technology and digital solutions company based in Lagos, Nigeria.
+        <!-- Page Header -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">About <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Prodigy Tech</span></h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Transforming businesses through innovative digital solutions, creative excellence, and unwavering commitment to our clients' success.</p>
+        </section>
+
+        <!-- About Statement Section -->
+        <section id="about-us" class="mb-20 bg-gray-800 p-8 md:p-12 rounded-xl">
+            <h2 class="text-3xl font-bold mb-6">About Prodigy Tech & Digital Services</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Prodigy Tech & Digital Services is a specialized digital solutions arm of The Prodigy Consults Ltd, created to deliver modern, innovative, and result-driven technology services for businesses across Nigeria and internationally. We focus on helping brands build a strong digital presence, streamline operations, and scale through smart, effective digital tools.
                 </p>
-                <p class="text-xl text-gray-300">
-                    We help individuals, startups, and businesses build a strong digital footprint through professional web development, digital marketing, creative content, and publishing services.
+                <p>
+                    We provide end-to-end services including website design and development, web and mobile app solutions, digital marketing, branding and content creation, business digitization, cloud services, and book publishing support. Our goal is simple: to transform ideas into functional digital assets that attract customers, improve efficiency, and drive measurable growth.
+                </p>
+                <p>
+                    At Prodigy Tech & Digital Services, we work with startups, SMEs, and established organizations—ensuring every client gets solutions tailored to their needs, industry, and long-term goals. Backed by the structure and reputation of The Prodigy Consults Ltd, we combine creativity, technology, and strategy to deliver dependable results.
+                </p>
+                <p>
+                    Whether you are launching a new business, expanding your digital footprint, or upgrading your systems, Prodigy Tech & Digital Services is your trusted partner for everything digital.
                 </p>
             </div>
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            <div>
-                <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
-                <p class="text-gray-300 mb-6">To provide cutting-edge digital services that help businesses thrive in an increasingly online world.</p>
-                <img src="http://static.photos/office/1024x576/3" alt="Our team" class="rounded-xl shadow-lg">
-            </div>
-            <div>
-                <h2 class="text-3xl font-bold mb-6">Core Values</h2>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center">
-                            <i data-feather="zap" class="text-primary"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold">Innovation</h3>
-                            <p class="text-gray-400">We stay ahead of digital trends to deliver future-proof solutions.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center">
-                            <i data-feather="heart" class="text-secondary"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold">Integrity</h3>
-                            <p class="text-gray-400">We build trust through transparency and ethical practices.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center">
-                            <i data-feather="users" class="text-purple-500"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold">Collaboration</h3>
-                            <p class="text-gray-400">We work closely with clients to achieve shared success.</p>
-                        </div>
+        <!-- Mission Section -->
+        <section class="mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                        <span class="text-3xl">🌍</span>
+                        <span>Our Mission</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        To deliver innovative, reliable, and high-impact digital solutions that empower individuals, entrepreneurs, and businesses to grow, scale, and succeed in the digital economy.
+                    </p>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        We achieve this through exceptional design, technology, marketing, and creative services built around customer success. Every project we undertake is a partnership where your growth becomes our mission.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-primary to-secondary rounded-xl p-1">
+                    <div class="bg-gray-800 rounded-lg p-8 h-full flex items-center justify-center">
+                        <i data-feather="target" class="w-32 h-32 text-primary opacity-20"></i>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 id="our-team" class="text-3xl font-bold text-center mb-10 text-primary">Meet Our Leadership Team</h2>
+        <!-- Vision Section -->
+        <section class="mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-gradient-to-br from-secondary to-primary rounded-xl p-1 order-last md:order-first">
+                    <div class="bg-gray-800 rounded-lg p-8 h-full flex items-center justify-center">
+                        <i data-feather="rocket" class="w-32 h-32 text-secondary opacity-20"></i>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                        <span class="text-3xl">🚀</span>
+                        <span>Our Vision</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        To become a leading African digital solutions powerhouse recognized globally for excellence in technology, creativity, and digital transformation — building businesses, brands, and authors for the future.
+                    </p>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        We envision a world where every business, no matter its size, has access to world-class digital solutions that help them thrive, innovate, and lead in their industries.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">💎 Our Core Values</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">These principles guide every decision and action we take</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Innovation -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="lightbulb" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-2xl">💡</span>Innovation</h3>
+                    <p class="text-gray-400">We embrace creativity, modern tools, and forward-thinking solutions to keep our clients ahead in a fast-changing digital world.</p>
+                </div>
+
+                <!-- Excellence -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="award" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Excellence</h3>
+                    <p class="text-gray-400">We maintain world-class standards in every project — from design to development, content, and customer experience.</p>
+                </div>
+
+                <!-- Integrity -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="handshake" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-2xl">🤝</span>Integrity</h3>
+                    <p class="text-gray-400">We operate with honesty, transparency, and responsibility — delivering on time and standing by our promises.</p>
+                </div>
+
+                <!-- Customer Success -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="trending-up" class="text-secondary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Customer Success</h3>
+                    <p class="text-gray-400">Your success is our success. We focus on achieving real results, measurable growth, and long-term value for every client.</p>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="users" class="text-secondary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Collaboration</h3>
+                    <p class="text-gray-400">We build strong partnerships with clients, creators, and brands, working as one team to bring ideas to life.</p>
+                </div>
+
+                <!-- Reliability -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-secondary bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="shield" class="text-secondary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reliability</h3>
+                    <p class="text-gray-400">We ensure consistency, responsiveness, and dependable service across all our digital offerings and engagements.</p>
+                </div>
+
+                <!-- Growth Mindset -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:shadow-xl transition md:col-span-2 lg:col-span-1">
+                    <div class="w-16 h-16 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-feather="zap" class="text-purple-500 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Growth Mindset</h3>
+                    <p class="text-gray-400">We constantly learn, evolve, and improve so we can offer solutions that match global standards and emerging trends.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Prodigy Tech</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">What sets us apart from other digital service providers</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-6 rounded-xl text-center">
-                    <img src="http://static.photos/people/400x400/1" alt="Oluwaseun Adesile" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold">Oluwaseun Adesile</h3>
-                    <p class="text-primary mb-2">CEO & Founder</p>
-                    <p class="text-gray-400">IT and Digital strategy expert with 10+ years experience</p>
+                <div class="bg-gradient-to-br from-primary to-blue-600 rounded-xl p-1">
+                    <div class="bg-gray-800 rounded-lg p-8 h-full">
+                        <i data-feather="zap" class="w-12 h-12 text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Innovation-First Approach</h3>
+                        <p class="text-gray-400">We don't just solve problems — we anticipate future needs and create forward-thinking solutions.</p>
+                    </div>
                 </div>
-                
-                <div class="bg-gray-800 p-6 rounded-xl text-center">
-                    <img src="http://static.photos/people/400x400/2" alt="Oluwatobiloba Oyewole" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold">Oluwatobiloba Oyewole</h3>
-                    <p class="text-secondary mb-2">Branding Specialist</p>
-                    <p class="text-gray-400">Branding and Book Publishing Specialist</p>
+
+                <div class="bg-gradient-to-br from-secondary to-green-600 rounded-xl p-1">
+                    <div class="bg-gray-800 rounded-lg p-8 h-full">
+                        <i data-feather="award" class="w-12 h-12 text-secondary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Proven Excellence</h3>
+                        <p class="text-gray-400">Our portfolio speaks for itself — we've delivered exceptional results for startups to enterprises.</p>
+                    </div>
                 </div>
-                
-                <div class="bg-gray-800 p-6 rounded-xl text-center">
-                    <img src="http://static.photos/people/400x400/3" alt="Ayomide Isiah Adesile" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold">Ayomide Isiaih Adesile</h3>
-                    <p class="text-purple-500 mb-2">Tech Lead</p>
-                    <p class="text-gray-400">Full-stack developer and solutions architect</p>
+
+                <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl p-1">
+                    <div class="bg-gray-800 rounded-lg p-8 h-full">
+                        <i data-feather="heart" class="w-12 h-12 text-purple-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Client-Centric Culture</h3>
+                        <p class="text-gray-400">Your goals are our goals. We invest time in understanding your business deeply.</p>
+                    </div>
                 </div>
-</div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section class="mb-20">
+            <div class="bg-gray-800 p-8 md:p-12 rounded-xl">
+                <h2 class="text-3xl font-bold mb-4">Our Technical Expertise</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    Developing business solutions for small-scale organizations or enterprise applications across multiple platforms requires both dedication and skill. Analyzing, (re)designing, implementing, and supporting systems is our work — we understand it. We have a number of qualified professionals dedicated to doing the work required to implement the business solutions desired by our clients.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="layers" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">UML</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="coffee" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">Java</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="code" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">Visual Basic</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="globe" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">HTML + CSS + JavaScript</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="server" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">PHP</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="file-text" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">XML</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="database" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">MySQL</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg text-center hover:bg-gray-700 transition">
+                        <i data-feather="database" class="w-8 h-8 mx-auto mb-3 text-primary"></i>
+                        <p class="font-semibold text-sm">MS SQL & Oracle</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <p class="text-gray-400 font-semibold">And many more emerging technologies...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="our-team" class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Our Leadership Team</h2>
+                <p class="text-gray-400">Experienced professionals dedicated to your success</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden text-center hover:shadow-xl transition">
+                    <img src="/images/team-member-oluwaseun.png" alt="Oluwaseun Adesile" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Oluwaseun Adesile</h3>
+                        <p class="text-primary font-semibold mb-3">CEO & Founder</p>
+                        <p class="text-gray-400">IT and Digital strategy expert with 10+ years experience in transforming businesses through digital innovation.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden text-center hover:shadow-xl transition">
+                    <img src="/images/team-member-oluwatobiloba.png" alt="Oluwatobiloba Oyewole" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Oluwatobiloba Oyewole</h3>
+                        <p class="text-secondary font-semibold mb-3">Branding & Publishing Specialist</p>
+                        <p class="text-gray-400">Creative expert specializing in brand identity design and book publishing with a portfolio of successful global launches.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden text-center hover:shadow-xl transition">
+                    <img src="/images/team-member-ayomide.png" alt="Ayomide Isiah Adesile" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Ayomide Isiah Adesile</h3>
+                        <p class="text-purple-400 font-semibold mb-3">Tech Lead & Solutions Architect</p>
+                        <p class="text-gray-400">Full-stack developer and solutions architect with expertise in building scalable web and mobile applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 md:p-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Let's Build Something Great Together</h2>
+            <p class="text-lg mb-8 text-gray-100 max-w-2xl mx-auto">Ready to start your digital transformation journey? Our team is here to help.</p>
+            <a href="/contact/" class="inline-block px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 rounded-lg font-bold text-lg transition">
+                Get in Touch
+            </a>
         </section>
     </main>
 
     <custom-footer></custom-footer>
 
-    <script src="components/navbar.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="script.js"></script>
+    <script src="/components/navbar.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/script.js"></script>
     <script>feather.replace();</script>
 </body>
 </html>
