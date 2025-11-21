@@ -1,3 +1,4 @@
+<script>
 class CustomNavbar extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' });
@@ -35,7 +36,8 @@ class CustomNavbar extends HTMLElement {
           background: linear-gradient(to right, #3B82F6, #10B981);
           -webkit-background-clip: text;
           background-clip: text;
-          color: transparent;
+          -webkit-text-fill-color: transparent;
+          font-weight: 700;
         }
         
         .nav-right {
@@ -59,6 +61,10 @@ class CustomNavbar extends HTMLElement {
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          border: none;
+          background: none;
+          cursor: pointer;
+          font-size: 1rem;
         }
         
         .nav-links a:hover,
@@ -72,13 +78,18 @@ class CustomNavbar extends HTMLElement {
           align-items: center;
         }
         
+        .dropdown > a {
+          cursor: pointer;
+          padding: 0.5rem 0;
+        }
+        
         .dropdown-content {
           display: none;
           position: absolute;
           background-color: #1E293B;
           min-width: 240px;
           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
-          z-index: 1;
+          z-index: 100;
           top: 100%;
           border-radius: 0.5rem;
           padding: 0.5rem 0;
@@ -93,7 +104,7 @@ class CustomNavbar extends HTMLElement {
           display: block;
           white-space: nowrap;
           transition: all 0.3s;
-          gap: 0;
+          font-size: 0.95rem;
         }
         
         .dropdown-content a:hover {
@@ -111,9 +122,7 @@ class CustomNavbar extends HTMLElement {
           background: none;
           border: none;
           color: white;
-          font-size: 1.5rem;
           cursor: pointer;
-          transition: color 0.3s;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -121,6 +130,7 @@ class CustomNavbar extends HTMLElement {
           height: 40px;
           border-radius: 50%;
           transition: all 0.3s;
+          padding: 0;
         }
         
         .dark-mode-toggle:hover,
@@ -143,16 +153,18 @@ class CustomNavbar extends HTMLElement {
             display: none;
             flex-direction: column;
             position: absolute;
-            top: 100%;
+            top: 60px;
             left: 0;
             width: 100%;
             background-color: #1E293B;
             padding: 1rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             gap: 0;
-            align-items: flex-start;
+            align-items: stretch;
             max-height: 80vh;
             overflow-y: auto;
+            z-index: 40;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
           }
           
           .nav-links.active {
@@ -168,12 +180,22 @@ class CustomNavbar extends HTMLElement {
           
           .mobile-menu-btn {
             display: flex;
+            position: relative;
+            z-index: 51;
           }
           
           .dropdown {
             width: 100%;
-            display: block;
+            display: flex;
+            flex-direction: column;
             position: static;
+          }
+          
+          .dropdown > a {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
           }
           
           .dropdown-content {
@@ -185,6 +207,7 @@ class CustomNavbar extends HTMLElement {
             background-color: #162E4D;
             margin: 0;
             display: none;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
           }
           
           .dropdown.active .dropdown-content {
@@ -204,8 +227,9 @@ class CustomNavbar extends HTMLElement {
           .dropdown > a::after {
             content: '▼';
             font-size: 0.75rem;
-            margin-left: 0.5rem;
+            margin-left: auto;
             transition: transform 0.3s;
+            order: 2;
           }
           
           .dropdown.active > a::after {
@@ -218,6 +242,7 @@ class CustomNavbar extends HTMLElement {
           
           .nav-right {
             gap: 1rem;
+            z-index: 51;
           }
         }
 
@@ -268,11 +293,11 @@ class CustomNavbar extends HTMLElement {
               <a href="/contact/">Contact</a>
             </div>
             
-            <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode">
+            <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode" type="button">
               <i data-feather="sun"></i>
             </button>
             
-            <button class="mobile-menu-btn" title="Toggle menu">
+            <button class="mobile-menu-btn" title="Toggle menu" type="button">
               <i data-feather="menu"></i>
             </button>
           </div>
@@ -280,19 +305,23 @@ class CustomNavbar extends HTMLElement {
       </nav>
     `;
 
-    // Mobile menu toggle
+    this.setupEventListeners();
+  }
+
+  setupEventListeners() {
     const menuBtn = this.shadowRoot.querySelector('.mobile-menu-btn');
     const navLinks = this.shadowRoot.querySelector('.nav-links');
     const dropdowns = this.shadowRoot.querySelectorAll('.dropdown');
 
-    menuBtn.addEventListener('click', () => {
+    menuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       navLinks.classList.toggle('active');
       feather.replace({ parent: this.shadowRoot });
     });
 
-    // Close menu when link is clicked
-    const links = this.shadowRoot.querySelectorAll('.nav-links > a:not(.dropdown > a)');
-    links.forEach(link => {
+    // Close menu when non-dropdown link is clicked
+    const directLinks = this.shadowRoot.querySelectorAll('.nav-links > a:not(.dropdown a)');
+    directLinks.forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
       });
@@ -312,11 +341,11 @@ class CustomNavbar extends HTMLElement {
 
     // Dark mode toggle
     const darkModeToggle = this.shadowRoot.querySelector('#darkModeToggle');
-    darkModeToggle.addEventListener('click', () => {
+    darkModeToggle.addEventListener('click', (e) => {
+      e.preventDefault();
       document.documentElement.classList.toggle('dark');
       localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
       this.updateDarkModeIcon();
-      feather.replace({ parent: this.shadowRoot });
     });
 
     // Check for saved user preference
@@ -331,12 +360,15 @@ class CustomNavbar extends HTMLElement {
   updateDarkModeIcon() {
     const toggle = this.shadowRoot.querySelector('#darkModeToggle');
     const isDark = document.documentElement.classList.contains('dark');
-    const icon = toggle.querySelector('i');
-    if (icon) {
-      icon.setAttribute('data-feather', isDark ? 'moon' : 'sun');
-      feather.replace({ parent: this.shadowRoot });
+    if (toggle) {
+      const icon = toggle.querySelector('i');
+      if (icon) {
+        icon.setAttribute('data-feather', isDark ? 'moon' : 'sun');
+        feather.replace({ parent: this.shadowRoot });
+      }
     }
   }
 }
 
 customElements.define('custom-navbar', CustomNavbar);
+</script>

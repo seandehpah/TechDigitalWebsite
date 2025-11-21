@@ -1,3 +1,4 @@
+<script>
 class CustomFooter extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' });
@@ -41,14 +42,15 @@ class CustomFooter extends HTMLElement {
           background: linear-gradient(to right, #3B82F6, #10B981);
           -webkit-background-clip: text;
           background-clip: text;
-          color: transparent;
+          -webkit-text-fill-color: transparent;
+          font-weight: 700;
         }
 
         .footer-about p {
           color: rgba(255, 255, 255, 0.7);
           font-size: 0.95rem;
           line-height: 1.6;
-          margin: 0;
+          margin: 0 0 1rem 0;
         }
 
         .footer-links ul {
@@ -92,6 +94,8 @@ class CustomFooter extends HTMLElement {
           height: 20px;
           flex-shrink: 0;
           margin-top: 2px;
+          stroke-width: 2;
+          display: inline-block;
         }
 
         .contact-item a,
@@ -120,7 +124,7 @@ class CustomFooter extends HTMLElement {
           justify-content: center;
           width: 40px;
           height: 40px;
-          background-color: rgba(255, 255, 255, 0.1);
+          background-color: rgba(59, 130, 246, 0.15);
           border-radius: 50%;
           transition: all 0.3s;
           text-decoration: none;
@@ -128,13 +132,15 @@ class CustomFooter extends HTMLElement {
 
         .social-links a:hover {
           background-color: #3B82F6;
-          transform: translateY(-2px);
+          transform: translateY(-3px);
         }
 
         .social-links i {
           width: 20px;
           height: 20px;
           color: white;
+          stroke-width: 2;
+          display: inline-block;
         }
 
         /* Bottom Section */
@@ -285,3 +291,4 @@ class CustomFooter extends HTMLElement {
 }
 
 customElements.define('custom-footer', CustomFooter);
+</script>
