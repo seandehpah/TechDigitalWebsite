@@ -91,7 +91,7 @@ class CustomFooter extends HTMLElement {
                     </div>
 
                     <!-- Divider -->
-                    <div class="border-t border-gray-700 py-4"></div>
+                    <div class="border-t border-gray-700 py-2"></div>
 
                     <!-- Bottom Footer -->
                     <div class="flex justify-center items-center text-sm text-white">
