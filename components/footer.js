@@ -3,7 +3,7 @@ class CustomFooter extends HTMLElement {
     connectedCallback() {
         const currentYear = new Date().getFullYear();
         this.innerHTML = `
-            <footer class="bg-gray-800 border-t border-gray-700 mt-20">
+            <footer class="bg-gray-800 border-t border-gray-700 mt-8">
                 <div class="container mx-auto px-4 py-12">
                     <!-- Main Footer Content -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -91,7 +91,7 @@ class CustomFooter extends HTMLElement {
                     </div>
 
                     <!-- Divider -->
-                    <div class="border-t border-gray-700 py-2"></div>
+                    <div class="border-t border-gray-700 py-1"></div>
 
                     <!-- Bottom Footer -->
                     <div class="flex justify-center items-center text-sm text-white">
