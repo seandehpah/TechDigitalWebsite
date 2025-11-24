@@ -10,7 +10,7 @@ class CustomFooter extends HTMLElement {
                         <!-- Logo and Social Section -->
                         <div>
                             <div class="mb-4">
-                                <img src="/images/logo.png" alt="Prodigy Tech Logo" class="w-12 h-12 object-contain mb-3">
+                                <a href="/"><img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[50px] w-auto object-contain mb-3">
                             </div>
                             <p class="text-sm text-white mb-4">We provide innovative digital solutions including web development, marketing, creative branding, and business infrastructure services.</p>
                             
@@ -108,7 +108,7 @@ class CustomFooter extends HTMLElement {
                     </div>
 
                     <!-- Divider -->
-                    <div class="border-t border-gray-700 py-8"></div>
+                    <div class="border-t border-gray-700 py-2"></div>
 
                     <!-- Bottom Footer -->
                     <div class="flex flex-col md:flex-row justify-center items-center text-sm text-white">
