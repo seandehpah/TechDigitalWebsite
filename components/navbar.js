@@ -15,10 +15,10 @@ class CustomNavbar extends HTMLElement {
     render() {
         this.innerHTML = `
             <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 shadow-lg">
-                <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+                <div class="container mx-auto px-4 py-3 flex justify-between items-center">
                     <!-- Logo -->
                     <a href="/" class="flex items-center gap-2 text-xl font-bold text-white hover:text-primary transition">
-                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[70px] w-auto object-contain">
+                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[80px] w-auto object-contain">
                     </a>
 
                     <!-- Desktop Navigation -->
@@ -61,9 +61,8 @@ class CustomNavbar extends HTMLElement {
                         <a href="/about/" class="block px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition">About</a>
                         
                         <!-- Mobile Services Dropdown -->
-                        <a href="/services/" class="block px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition font-medium">Services</a>
-                        <button id="mobileServicesBtn" class="w-full text-left px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition flex justify-between items-center text-sm">
-                            View All Services
+                        <button id="mobileServicesBtn" class="w-full text-left px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition font-medium flex justify-between items-center">
+                            Services
                             <svg id="mobileServicesArrow" class="w-4 h-4 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                             </svg>
@@ -99,6 +98,7 @@ class CustomNavbar extends HTMLElement {
                 } else {
                     mobileMenu.classList.add('hidden');
                     mobileServicesDropdown.classList.add('hidden');
+                    mobileServicesArrow.style.transform = 'rotate(0deg)';
                 }
             });
 
@@ -109,6 +109,7 @@ class CustomNavbar extends HTMLElement {
                     this.mobileMenuOpen = false;
                     mobileMenu.classList.add('hidden');
                     mobileServicesDropdown.classList.add('hidden');
+                    mobileServicesArrow.style.transform = 'rotate(0deg)';
                 });
             });
         }
