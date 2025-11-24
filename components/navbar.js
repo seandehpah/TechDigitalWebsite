@@ -15,10 +15,10 @@ class CustomNavbar extends HTMLElement {
     render() {
         this.innerHTML = `
             <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 shadow-lg">
-                <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="container mx-auto px-4 py-6 flex justify-between items-center">
                     <!-- Logo -->
                     <a href="/" class="flex items-center gap-2 text-xl font-bold text-white hover:text-primary transition">
-                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[50px] w-auto object-contain">
+                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[70px] w-auto object-contain">
                     </a>
 
                     <!-- Desktop Navigation -->
