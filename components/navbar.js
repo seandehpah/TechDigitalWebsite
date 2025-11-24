@@ -18,7 +18,7 @@ class CustomNavbar extends HTMLElement {
                 <div class="container mx-auto px-4 py-4 flex justify-between items-center">
                     <!-- Logo -->
                     <a href="/" class="flex items-center gap-2 text-xl font-bold text-white hover:text-primary transition">
-                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[50px] w-auto object-contain">
+                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[70px] w-auto object-contain">
                     </a>
 
                     <!-- Desktop Navigation -->

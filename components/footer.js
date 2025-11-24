@@ -10,7 +10,7 @@ class CustomFooter extends HTMLElement {
                         <!-- Logo and Social Section -->
                         <div>
                             <div class="mb-4">
-                                <a href="/"><img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[50px] w-auto object-contain mb-3">
+                                <a href="/"><img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[70px] w-auto object-contain mb-3">
                             </div>
                             <p class="text-sm text-white mb-4">We provide innovative digital solutions including web development, marketing, creative branding, and business infrastructure services.</p>
                             
