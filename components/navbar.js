@@ -19,7 +19,6 @@ class CustomNavbar extends HTMLElement {
                     <!-- Logo -->
                     <a href="/" class="flex items-center gap-2 text-xl font-bold text-white hover:text-primary transition">
                         <img src="/images/logo.png" alt="Prodigy Tech Logo" class="w-8 h-8 object-contain">
-                        <span class="hidden sm:inline">Prodigy Tech</span>
                     </a>
 
                     <!-- Desktop Navigation -->

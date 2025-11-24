@@ -111,15 +111,8 @@ class CustomFooter extends HTMLElement {
                     <div class="border-t border-gray-700 py-8"></div>
 
                     <!-- Bottom Footer -->
-                    <div class="flex flex-col md:flex-row justify-between items-center text-sm text-white">
+                    <div class="flex flex-col md:flex-row justify-center items-center text-sm text-white">
                         <p>&copy; ${currentYear} Prodigy Tech & Digital Services. All rights reserved.</p>
-                        <div class="flex gap-4 mt-4 md:mt-0">
-                            <a href="/" class="text-white hover:text-primary transition">Home</a>
-                            <span>•</span>
-                            <a href="/about/" class="text-white hover:text-primary transition">About</a>
-                            <span>•</span>
-                            <a href="/contact/" class="text-white hover:text-primary transition">Contact</a>
-                        </div>
                     </div>
                 </div>
             </footer>
