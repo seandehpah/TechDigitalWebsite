@@ -1,0 +1,19 @@
+# Prodigy Tech - robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Allow specific crawling patterns
+Allow: /images/
+Allow: /js/
+Allow: /css/
+
+# Specify sitemap location
+Sitemap: https://prodigytechdigital.com.ng/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Request rate
+Request-rate: 30/1m

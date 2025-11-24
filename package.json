@@ -1,0 +1,24 @@
+{
+  "name": "prodigy-tech-website",
+  "version": "1.0.0",
+  "description": "Prodigy Tech - Digital Solutions Website",
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Development mode'",
+    "build": "echo 'No build needed for static site'",
+    "start": "echo 'Ready to deploy'"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.5",
+    "cors": "^2.8.5"
+  },
+  "keywords": [
+    "web development",
+    "digital marketing",
+    "branding",
+    "publishing",
+    "cloud solutions"
+  ],
+  "author": "Prodigy Tech & Digital Services",
+  "license": "MIT"
+}
