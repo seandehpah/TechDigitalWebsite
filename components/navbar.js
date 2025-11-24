@@ -18,7 +18,7 @@ class CustomNavbar extends HTMLElement {
                 <div class="container mx-auto px-4 py-4 flex justify-between items-center">
                     <!-- Logo -->
                     <a href="/" class="flex items-center gap-2 text-xl font-bold text-white hover:text-primary transition">
-                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[70px] w-auto object-contain">
+                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[50px] w-auto object-contain">
                     </a>
 
                     <!-- Desktop Navigation -->
@@ -28,12 +28,12 @@ class CustomNavbar extends HTMLElement {
                         
                         <!-- Services Dropdown -->
                         <div class="relative group">
-                            <button class="text-white hover:text-primary transition font-medium flex items-center gap-1">
+                            <a href="/services/" class="text-white hover:text-primary transition font-medium flex items-center gap-1">
                                 Services
                                 <svg class="w-4 h-4 group-hover:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                                 </svg>
-                            </button>
+                            </a>
                             <div class="absolute left-0 mt-0 w-56 bg-gray-900 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 border border-gray-700">
                                 <a href="/digital-products/" class="block px-4 py-2 text-white hover:text-primary hover:bg-gray-800 transition">Digital Products & Development</a>
                                 <a href="/digital-marketing/" class="block px-4 py-2 text-white hover:text-primary hover:bg-gray-800 transition">Digital Marketing & Growth</a>
@@ -61,8 +61,9 @@ class CustomNavbar extends HTMLElement {
                         <a href="/about/" class="block px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition">About</a>
                         
                         <!-- Mobile Services Dropdown -->
-                        <button id="mobileServicesBtn" class="w-full text-left px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition flex justify-between items-center">
-                            Services
+                        <a href="/services/" class="block px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition font-medium">Services</a>
+                        <button id="mobileServicesBtn" class="w-full text-left px-4 py-2 text-white hover:text-primary hover:bg-gray-800 rounded transition flex justify-between items-center text-sm">
+                            View All Services
                             <svg id="mobileServicesArrow" class="w-4 h-4 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                             </svg>
