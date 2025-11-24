@@ -4,6 +4,8 @@ class CustomNavbar extends HTMLElement {
         super();
         this.mobileMenuOpen = false;
         this.servicesDropdownOpen = false;
+        this.servicesClickCount = 0;
+        this.servicesClickTimeout = null;
     }
 
     connectedCallback() {
@@ -18,7 +20,7 @@ class CustomNavbar extends HTMLElement {
                 <div class="container mx-auto px-4 py-3 flex justify-between items-center">
                     <!-- Logo -->
                     <a href="/" class="flex items-center gap-2 text-xl font-bold text-white hover:text-primary transition">
-                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[80px] w-auto object-contain">
+                        <img src="/images/logo.png" alt="Prodigy Tech Logo" class="h-[50px] w-auto object-contain">
                     </a>
 
                     <!-- Desktop Navigation -->
@@ -99,6 +101,7 @@ class CustomNavbar extends HTMLElement {
                     mobileMenu.classList.add('hidden');
                     mobileServicesDropdown.classList.add('hidden');
                     mobileServicesArrow.style.transform = 'rotate(0deg)';
+                    this.servicesClickCount = 0;
                 }
             });
 
@@ -110,21 +113,37 @@ class CustomNavbar extends HTMLElement {
                     mobileMenu.classList.add('hidden');
                     mobileServicesDropdown.classList.add('hidden');
                     mobileServicesArrow.style.transform = 'rotate(0deg)';
+                    this.servicesClickCount = 0;
                 });
             });
         }
 
-        // Mobile services dropdown toggle
+        // Mobile services button - first tap opens dropdown, second tap navigates
         if (mobileServicesBtn && mobileServicesDropdown) {
             mobileServicesBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.servicesDropdownOpen = !this.servicesDropdownOpen;
-                if (this.servicesDropdownOpen) {
-                    mobileServicesDropdown.classList.remove('hidden');
-                    mobileServicesArrow.style.transform = 'rotate(180deg)';
-                } else {
-                    mobileServicesDropdown.classList.add('hidden');
-                    mobileServicesArrow.style.transform = 'rotate(0deg)';
+                this.servicesClickCount++;
+
+                if (this.servicesClickCount === 1) {
+                    // First tap - toggle dropdown
+                    this.servicesDropdownOpen = !this.servicesDropdownOpen;
+                    if (this.servicesDropdownOpen) {
+                        mobileServicesDropdown.classList.remove('hidden');
+                        mobileServicesArrow.style.transform = 'rotate(180deg)';
+                    } else {
+                        mobileServicesDropdown.classList.add('hidden');
+                        mobileServicesArrow.style.transform = 'rotate(0deg)';
+                    }
+
+                    // Reset click count after 1.5 seconds
+                    clearTimeout(this.servicesClickTimeout);
+                    this.servicesClickTimeout = setTimeout(() => {
+                        this.servicesClickCount = 0;
+                    }, 1500);
+                } else if (this.servicesClickCount === 2) {
+                    // Second tap - navigate to services page
+                    window.location.href = '/services/';
+                    this.servicesClickCount = 0;
                 }
             });
         }
