@@ -1,193 +1,174 @@
 import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-  // CORS Headers
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || 'https://prodigytechdigital.com.ng');
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
+  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).send('ok');
   }
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+  // Only accept POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     const { name, email, phone, service, message } = req.body;
-    
+
+    console.log('Received form data:', { name, email, service });
+
     // Validate required fields
     if (!name || !email || !message) {
-      return res.status(400).json({ 
-        error: "Name, email, and message are required" 
+      console.log('Validation failed: missing required fields');
+      return res.status(400).json({
+        error: 'Name, email, and message are required'
       });
     }
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ 
-        error: "Please provide a valid email address" 
+      console.log('Email validation failed:', email);
+      return res.status(400).json({
+        error: 'Please provide a valid email address'
       });
     }
 
     // Verify environment variables
-    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_RECEIVER) {
-      console.error("Missing environment variables");
-      return res.status(500).json({ 
-        error: "Server configuration error",
-        details: process.env.NODE_ENV === 'production' ? 'Please try again later' : 'Missing SMTP configuration'
+    const { SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_RECEIVER } = process.env;
+
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACT_RECEIVER) {
+      console.error('Missing environment variables:', {
+        SMTP_HOST: !!SMTP_HOST,
+        SMTP_USER: !!SMTP_USER,
+        SMTP_PASS: !!SMTP_PASS,
+        CONTACT_RECEIVER: !!CONTACT_RECEIVER
+      });
+      return res.status(500).json({
+        error: 'Server configuration error',
+        details: 'Missing SMTP configuration'
       });
     }
 
-    // Create transporter with Microsoft 365 (Exchange)
+    console.log('Environment variables verified');
+
+    // Create transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
+      host: SMTP_HOST,
       port: 587,
       secure: false,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: SMTP_USER,
+        pass: SMTP_PASS
       },
-      tls: { 
+      tls: {
         rejectUnauthorized: false,
         minVersion: 'TLSv1.2'
-      },
-      connectionUrl: false,
-      maxConnections: 1,
-      maxMessages: 1,
-      rateDelta: 1000,
-      rateLimit: 5
+      }
     });
 
-    // Verify connection
+    console.log('Transporter created, verifying connection...');
+
+    // Verify SMTP connection
     try {
       await transporter.verify();
-      console.log("SMTP connection verified");
+      console.log('✓ SMTP connection verified');
     } catch (verifyErr) {
-      console.error("SMTP verification failed:", verifyErr);
-      return res.status(500).json({ 
-        error: "SMTP connection failed",
-        details: process.env.NODE_ENV === 'production' ? 'Please try again later' : verifyErr.message
+      console.error('✗ SMTP verification failed:', verifyErr.message);
+      return res.status(500).json({
+        error: 'Email service connection failed',
+        details: verifyErr.message
       });
     }
 
-    // Email content to admin
-    const adminMailOptions = {
-      from: process.env.SMTP_USER,
-      to: process.env.CONTACT_RECEIVER,
+    // Admin notification email
+    const adminEmail = {
+      from: SMTP_USER,
+      to: CONTACT_RECEIVER,
       replyTo: email,
-      subject: `New Website Contact Form Submission - ${service || 'General Inquiry'}`,
+      subject: `New Contact Form Submission - ${service || 'General Inquiry'}`,
       html: `
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 40px 20px; min-height: 500px;">
-          <div style="background-color: white; padding: 40px; border-radius: 12px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-            
-            <!-- Header -->
-            <div style="border-bottom: 3px solid #3B82F6; padding-bottom: 20px; margin-bottom: 30px;">
-              <h2 style="color: #1e293b; margin: 0; font-size: 24px;">🎯 New Contact Form Submission</h2>
-              <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">From Prodigy Tech Website</p>
-            </div>
-            
-            <!-- Contact Information -->
-            <div style="margin-bottom: 30px;">
-              <div style="display: flex; margin-bottom: 15px;">
-                <span style="color: #3B82F6; font-weight: bold; min-width: 120px;">Name:</span>
-                <span style="color: #333;">${name}</span>
-              </div>
-              <div style="display: flex; margin-bottom: 15px;">
-                <span style="color: #3B82F6; font-weight: bold; min-width: 120px;">Email:</span>
-                <span style="color: #333;"><a href="mailto:${email}" style="color: #3B82F6; text-decoration: none;">${email}</a></span>
-              </div>
-              <div style="display: flex; margin-bottom: 15px;">
-                <span style="color: #3B82F6; font-weight: bold; min-width: 120px;">Phone:</span>
-                <span style="color: #333;">${phone || "Not provided"}</span>
-              </div>
-              <div style="display: flex;">
-                <span style="color: #3B82F6; font-weight: bold; min-width: 120px;">Service:</span>
-                <span style="color: #333; background-color: #f0f4ff; padding: 4px 12px; border-radius: 20px;">${service || "Not specified"}</span>
-              </div>
-            </div>
-
-            <!-- Message -->
-            <div style="background-color: #f9fafb; padding: 20px; border-left: 4px solid #10B981; border-radius: 6px; margin-bottom: 30px;">
-              <p style="color: #3B82F6; font-weight: bold; margin: 0 0 15px 0;">Message:</p>
-              <p style="color: #333; white-space: pre-wrap; margin: 0; line-height: 1.6;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
-            </div>
-
-            <!-- Footer -->
-            <div style="background-color: #f0f4ff; padding: 20px; border-radius: 6px; text-align: center; border-top: 2px solid #e5e7eb;">
-              <p style="color: #666; margin: 0; font-size: 14px;">
-                <strong>Prodigy Tech & Digital Services</strong><br>
-                Digital Solutions for Modern Businesses<br>
-                <a href="https://prodigytechdigital.com.ng" style="color: #3B82F6; text-decoration: none;">Visit our website</a>
-              </p>
-            </div>
-
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #3B82F6; border-bottom: 2px solid #3B82F6; padding-bottom: 10px;">🎯 New Contact Form Submission</h2>
+          
+          <div style="margin: 20px 0;">
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Service:</strong> ${service || 'Not specified'}</p>
           </div>
 
-          <!-- Auto-reply note -->
-          <div style="text-align: center; margin-top: 30px; color: #999; font-size: 12px;">
-            <p>This email was sent from the Prodigy Tech website contact form at ${new Date().toLocaleString()}</p>
+          <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #10B981; margin: 20px 0;">
+            <p><strong>Message:</strong></p>
+            <p style="white-space: pre-wrap;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
           </div>
+
+          <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+          <p style="font-size: 12px; color: #666;">
+            This email was sent from the contact form at prodigytechdigital.com.ng
+          </p>
         </div>
       `
     };
 
-    // Send email to admin
-    await transporter.sendMail(adminMailOptions);
-    console.log("✓ Admin notification sent successfully");
+    // Send admin notification
+    await transporter.sendMail(adminEmail);
+    console.log('✓ Admin email sent');
 
-    // Send auto-reply to user
-    const userAutoReplyOptions = {
-      from: process.env.SMTP_USER,
+    // Auto-reply to user
+    const userEmail = {
+      from: SMTP_USER,
       to: email,
-      subject: "We received your message - Prodigy Tech",
+      subject: 'We received your message - Prodigy Tech',
       html: `
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9fafb; padding: 40px 20px;">
-          <div style="background-color: white; padding: 40px; border-radius: 12px; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #3B82F6; margin-bottom: 20px;">✓ We've received your message!</h2>
-            <p style="color: #333; line-height: 1.6; margin-bottom: 15px;">
-              Hi ${name},<br><br>
-              Thank you for reaching out to Prodigy Tech. We've received your message and appreciate your interest in our services.
-            </p>
-            <p style="color: #333; line-height: 1.6; margin-bottom: 15px;">
-              Our team will review your inquiry and get back to you as soon as possible, typically within 24 business hours.
-            </p>
-            <div style="background-color: #f0f4ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p style="color: #666; margin: 0;"><strong>In the meantime:</strong></p>
-              <ul style="color: #666; margin: 10px 0 0 20px;">
-                <li>Explore our <a href="https://prodigytechdigital.com.ng/services/" style="color: #3B82F6;">services</a></li>
-                <li>Check out our <a href="https://prodigytechdigital.com.ng/portfolio/" style="color: #3B82F6;">portfolio</a></li>
-                <li>Learn <a href="https://prodigytechdigital.com.ng/about/" style="color: #3B82F6;">about us</a></li>
-              </ul>
-            </div>
-            <p style="color: #999; font-size: 12px; margin-top: 30px; text-align: center;">
-              © 2024 Prodigy Tech & Digital Services. All rights reserved.
-            </p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #3B82F6;">✓ We've received your message!</h2>
+          
+          <p>Hi ${name},</p>
+          
+          <p>Thank you for reaching out to Prodigy Tech. We've received your message and appreciate your interest in our services.</p>
+          
+          <p>Our team will review your inquiry and get back to you as soon as possible, typically within 24 business hours.</p>
+
+          <div style="background: #f0f4ff; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <p><strong>In the meantime:</strong></p>
+            <ul>
+              <li><a href="https://prodigytechdigital.com.ng/services/" style="color: #3B82F6;">Explore our services</a></li>
+              <li><a href="https://prodigytechdigital.com.ng/portfolio/" style="color: #3B82F6;">Check out our portfolio</a></li>
+              <li><a href="https://prodigytechdigital.com.ng/about/" style="color: #3B82F6;">Learn about us</a></li>
+            </ul>
           </div>
+
+          <p style="font-size: 12px; color: #666; margin-top: 30px;">
+            © 2024 Prodigy Tech & Digital Services. All rights reserved.
+          </p>
         </div>
       `
     };
 
-    await transporter.sendMail(userAutoReplyOptions);
-    console.log("✓ User auto-reply sent successfully");
+    // Send user auto-reply
+    await transporter.sendMail(userEmail);
+    console.log('✓ User auto-reply sent');
 
-    // Close transporter to prevent hanging connections
-    await transporter.close();
+    // Close connection
+    transporter.close();
 
-    return res.status(200).json({ 
-      success: true, 
-      message: "Message sent successfully! We'll get back to you soon."
+    return res.status(200).json({
+      success: true,
+      message: 'Message sent successfully! We\'ll get back to you soon.'
     });
 
   } catch (err) {
-    console.error("MAIL ERROR:", err);
-    return res.status(500).json({ 
-      error: "Failed to send email", 
-      details: process.env.NODE_ENV === 'production' ? 'Please try again later' : err.message
+    console.error('✗ MAIL ERROR:', err.message);
+    console.error('Stack:', err.stack);
+
+    return res.status(500).json({
+      error: 'Failed to send email',
+      details: err.message
     });
   }
 }
