@@ -1,17 +1,6 @@
 import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-  // CORS Headers
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || 'https://prodigytechdigital.com.ng');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -19,31 +8,10 @@ export default async function handler(req, res) {
   try {
     const { name, email, phone, service, message } = req.body;
     
-    // Validate required fields
     if (!name || !email || !message) {
-      return res.status(400).json({ 
-        error: "Name, email, and message are required" 
-      });
+      return res.status(400).json({ error: "Name, email, and message are required" });
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ 
-        error: "Please provide a valid email address" 
-      });
-    }
-
-    // Verify environment variables
-    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_RECEIVER) {
-      console.error("Missing environment variables");
-      return res.status(500).json({ 
-        error: "Server configuration error",
-        details: process.env.NODE_ENV === 'production' ? 'Please try again later' : 'Missing SMTP configuration'
-      });
-    }
-
-    // Create transporter with Microsoft 365 (Exchange)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: 587,
@@ -53,21 +21,9 @@ export default async function handler(req, res) {
         pass: process.env.SMTP_PASS,
       },
       tls: { 
-        rejectUnauthorized: false,
-        minVersion: 'TLSv1.2'
+        rejectUnauthorized: false
       }
     });
-
-    // Verify connection
-    try {
-      await transporter.verify();
-    } catch (verifyErr) {
-      console.error("SMTP verification failed:", verifyErr);
-      return res.status(500).json({ 
-        error: "SMTP connection failed",
-        details: process.env.NODE_ENV === 'production' ? 'Please try again later' : verifyErr.message
-      });
-    }
 
     // Email content to admin
     const adminMailOptions = {
@@ -176,7 +132,7 @@ export default async function handler(req, res) {
     console.error("MAIL ERROR:", err);
     return res.status(500).json({ 
       error: "Failed to send email", 
-      details: process.env.NODE_ENV === 'production' ? 'Please try again later' : err.message
+      details: err.message 
     });
   }
 }

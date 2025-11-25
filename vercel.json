@@ -1,34 +1,25 @@
 {
-  "buildCommand": "npm install",
+  "buildCommand": "echo 'Building...'",
   "outputDirectory": ".",
   "routes": [
     {
-      "src": "/api/sendmail$",
-      "methods": ["POST", "OPTIONS"],
-      "dest": "/api/sendmail.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
-      "src": "/api/(.*)$",
-      "dest": "/api/$1.js"
-    },
-    {
-      "src": "^/(.+\\.[a-z0-9]+)$",
+      "src": "/(.+\\.[a-z]+)$",
       "dest": "/$1"
     },
     {
-      "src": "^/(.+)\\.html$",
+      "src": "/(.+)\\.html$",
       "dest": "/$1/"
     },
     {
-      "src": "^/(.*)\\.html$",
-      "dest": "/$1"
-    },
-    {
-      "src": "^/(.*)/$",
+      "src": "/(.*)/$",
       "dest": "/$1.html"
     },
     {
-      "src": "^/(.*)$",
+      "src": "/(.*)",
       "dest": "/$1.html"
     }
   ]
