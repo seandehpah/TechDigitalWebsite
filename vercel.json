@@ -3,15 +3,18 @@
   "outputDirectory": ".",
   "functions": {
     "api/**/*.js": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 30
+      "runtime": "nodejs20.x"
     }
   },
   "routes": [
     {
-      "src": "/api/.*",
-      "dest": "/api/$1",
-      "methods": ["POST", "GET", "OPTIONS"]
+      "src": "/api/sendmail",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/sendmail.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
     },
     {
       "src": "/(.+\\.[a-z0-9]+)$",
