@@ -1,20 +1,11 @@
 {
-  "buildCommand": "echo 'Building static site...'",
+  "buildCommand": "npm install",
   "outputDirectory": ".",
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "routes": [
     {
       "src": "/api/sendmail",
       "methods": ["POST", "OPTIONS"],
       "dest": "/api/sendmail.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
     },
     {
       "src": "/(.+\\.[a-z0-9]+)$",
