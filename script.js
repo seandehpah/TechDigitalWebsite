@@ -64,8 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Form submission handler for contact page
+let isFormSubmitting = false;
+
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
+    const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmit);
@@ -75,25 +77,32 @@ document.addEventListener('DOMContentLoaded', function() {
 async function handleFormSubmit(e) {
     e.preventDefault();
     
+    // Prevent double submission
+    if (isFormSubmitting) {
+        console.log('Form already submitting...');
+        return;
+    }
+    
+    isFormSubmitting = true;
+    
     const submitBtn = e.target.querySelector('button[type="submit"]');
-    const successMsg = document.getElementById('successMessage');
-    const errorMsg = document.getElementById('errorMessage');
+    const feedback = document.getElementById('formFeedback');
     const originalText = submitBtn.textContent;
 
-    // Hide messages
-    if(successMsg) successMsg.classList.add('hidden');
-    if(errorMsg) errorMsg.classList.add('hidden');
+    // Hide previous feedback
+    if(feedback) feedback.textContent = '';
+    if(feedback) feedback.className = '';
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
     
     const formData = new FormData(e.target);
     const data = {
-        name: formData.get('Name'),
-        email: formData.get('Email'),
+        name: formData.get('name'),
+        email: formData.get('email'),
         phone: formData.get('phone') || '',
-        service: formData.get('Service'),
-        message: formData.get('Message')
+        service: formData.get('service'),
+        message: formData.get('message')
     };
     
     try {
@@ -108,26 +117,35 @@ async function handleFormSubmit(e) {
         const result = await response.json();
         
         if (result.success) {
-            if(successMsg) {
-                successMsg.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
-                successMsg.classList.remove('hidden');
+            if(feedback) {
+                feedback.textContent = '✓ ' + result.message;
+                feedback.className = 'text-center mt-4 text-lg text-green-600 font-semibold';
             }
             e.target.reset();
+            
+            // Auto-clear success message after 5 seconds
+            setTimeout(() => {
+                if(feedback) {
+                    feedback.textContent = '';
+                    feedback.className = '';
+                }
+            }, 5000);
         } else {
-            if(errorMsg) {
-                errorMsg.textContent = '✗ Error: ' + (result.error || 'Failed to send message');
-                errorMsg.classList.remove('hidden');
+            if(feedback) {
+                feedback.textContent = '✗ Error: ' + (result.error || 'Failed to send message');
+                feedback.className = 'text-center mt-4 text-lg text-red-600 font-semibold';
             }
         }
     } catch (error) {
         console.error('Form error:', error);
-        if(errorMsg) {
-            errorMsg.textContent = '✗ Failed to send message. Please try again or contact us directly.';
-            errorMsg.classList.remove('hidden');
+        if(feedback) {
+            feedback.textContent = '✗ Failed to send message. Please try again or contact us directly.';
+            feedback.className = 'text-center mt-4 text-lg text-red-600 font-semibold';
         }
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
+        isFormSubmitting = false;
     }
 }
 
