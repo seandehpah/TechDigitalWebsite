@@ -34,6 +34,15 @@ export default async function handler(req, res) {
       });
     }
 
+    // Verify environment variables
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.CONTACT_RECEIVER) {
+      console.error("Missing environment variables");
+      return res.status(500).json({ 
+        error: "Server configuration error",
+        details: process.env.NODE_ENV === 'production' ? 'Please try again later' : 'Missing SMTP configuration'
+      });
+    }
+
     // Create transporter with Microsoft 365 (Exchange)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -44,13 +53,31 @@ export default async function handler(req, res) {
         pass: process.env.SMTP_PASS,
       },
       tls: { 
-        rejectUnauthorized: true
-      }
+        rejectUnauthorized: false,
+        minVersion: 'TLSv1.2'
+      },
+      connectionUrl: false,
+      maxConnections: 1,
+      maxMessages: 1,
+      rateDelta: 1000,
+      rateLimit: 5
     });
 
-    // Email content
-    const mailOptions = {
-      from: `"Website Contact Form" <${process.env.SMTP_USER}>`,
+    // Verify connection
+    try {
+      await transporter.verify();
+      console.log("SMTP connection verified");
+    } catch (verifyErr) {
+      console.error("SMTP verification failed:", verifyErr);
+      return res.status(500).json({ 
+        error: "SMTP connection failed",
+        details: process.env.NODE_ENV === 'production' ? 'Please try again later' : verifyErr.message
+      });
+    }
+
+    // Email content to admin
+    const adminMailOptions = {
+      from: process.env.SMTP_USER,
       to: process.env.CONTACT_RECEIVER,
       replyTo: email,
       subject: `New Website Contact Form Submission - ${service || 'General Inquiry'}`,
@@ -109,12 +136,13 @@ export default async function handler(req, res) {
       `
     };
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    // Send email to admin
+    await transporter.sendMail(adminMailOptions);
+    console.log("✓ Admin notification sent successfully");
 
     // Send auto-reply to user
-    const autoReplyOptions = {
-      from: `"Prodigy Tech" <${process.env.SMTP_USER}>`,
+    const userAutoReplyOptions = {
+      from: process.env.SMTP_USER,
       to: email,
       subject: "We received your message - Prodigy Tech",
       html: `
@@ -144,7 +172,11 @@ export default async function handler(req, res) {
       `
     };
 
-    await transporter.sendMail(autoReplyOptions);
+    await transporter.sendMail(userAutoReplyOptions);
+    console.log("✓ User auto-reply sent successfully");
+
+    // Close transporter to prevent hanging connections
+    await transporter.close();
 
     return res.status(200).json({ 
       success: true, 

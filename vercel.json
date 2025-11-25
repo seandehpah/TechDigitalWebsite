@@ -3,21 +3,27 @@
   "outputDirectory": ".",
   "functions": {
     "api/**/*.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.x",
+      "maxDuration": 30
     }
   },
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/.*",
+      "dest": "/api/$1",
+      "methods": ["POST", "GET", "OPTIONS"]
     },
     {
-      "src": "/(.+\\.[a-z]+)$",
+      "src": "/(.+\\.[a-z0-9]+)$",
       "dest": "/$1"
     },
     {
       "src": "/(.+)\\.html$",
       "dest": "/$1/"
+    },
+    {
+      "src": "/(.*)\\.html$",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)/$",

@@ -46,12 +46,12 @@
                 <form id="contactForm" class="space-y-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                        <input type="text" id="name" name="Name" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="Your name">
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="Your name">
                     </div>
 
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                        <input type="email" id="email" name="Email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="your@email.com">
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="your@email.com">
                     </div>
 
                     <div>
@@ -61,7 +61,7 @@
 
                     <div>
                         <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service of Interest</label>
-                        <select id="service" name="Service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition text-white">
+                        <select id="service" name="service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition text-white">
                             <option value="General Inquiry">General Inquiry</option>
                             <option value="Digital Products & Development">Digital Products & Development</option>
                             <option value="Digital Marketing & Growth">Digital Marketing & Growth</option>
@@ -72,10 +72,10 @@
 
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
-                        <textarea id="message" name="Message" rows="5" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white resize-none" placeholder="Tell us about your project or question"></textarea>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white resize-none" placeholder="Tell us about your project or question"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition transform hover:scale-105">
+                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
                         Send Message
                     </button>
 
@@ -180,9 +180,19 @@
     <script>
         feather.replace();
 
-        // Form submission handler
+        // Prevent double submission
+        let isSubmitting = false;
+
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+
+            // Block if already submitting
+            if (isSubmitting) {
+                console.log("Form submission already in progress - blocking duplicate");
+                return;
+            }
+
+            isSubmitting = true;
 
             const submitBtn = this.querySelector('button[type="submit"]');
             const successMsg = document.getElementById('successMessage');
@@ -198,11 +208,11 @@
             submitBtn.textContent = 'Sending...';
 
             const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value || '',
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim() || '',
                 service: document.getElementById('service').value,
-                message: document.getElementById('message').value
+                message: document.getElementById('message').value.trim()
             };
 
             try {
@@ -231,6 +241,7 @@
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
+                isSubmitting = false;
             }
         });
     </script>
