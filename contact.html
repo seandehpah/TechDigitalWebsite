@@ -4,77 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Prodigy Tech & Digital Services</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Get in touch with Prodigy Tech. Contact us via email, phone, WhatsApp, or fill out our contact form for inquiries about our digital services.">
+    <link rel="icon" href="/images/icon.png" type="image/png">
+    
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-900 text-gray-100">
     <custom-navbar></custom-navbar>
     
     <main class="container mx-auto px-4 py-12">
-        <section class="mb-16 text-center">
+        <!-- Page Header -->
+        <section class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">Get In Touch</h1>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto">We'd love to hear from you. Reach out to start your digital journey.</p>
         </section>
 
+        <!-- Contact Section -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <!-- Contact Form -->
             <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold mb-6">Send Us a Message</h2>
                 <p class="text-gray-400 mb-6">Fill out the form below and we will get back to you within one business day.</p>
                 
-                <form action="mailto:hello@prodigytechdigital.com.ng" method="POST" enctype="text/plain" class="space-y-6">
+                <form id="contactForm" class="space-y-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                        <input type="text" id="name" name="Name" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition placeholder-gray-500" placeholder="Your name">
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="Your name">
                     </div>
+
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                        <input type="email" id="email" name="Email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition placeholder-gray-500" placeholder="your@email.com">
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="your@email.com">
                     </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white" placeholder="Your phone number">
+                    </div>
+
                     <div>
                         <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service of Interest</label>
-                        <select id="service" name="Service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition">
+                        <select id="service" name="service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition text-white">
                             <option value="General Inquiry">General Inquiry</option>
-                            <option value="Web & App Solutions">Web & App Solutions</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Digital Products & Development">Digital Products & Development</option>
+                            <option value="Digital Marketing & Growth">Digital Marketing & Growth</option>
                             <option value="Creative & Publishing">Creative & Publishing</option>
-                            <option value="Business Digital Setup">Business Digital Setup</option>
+                            <option value="Business Solutions & Infrastructure">Business Solutions & Infrastructure</option>
                         </select>
                     </div>
+
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
-                        <textarea id="message" name="Message" rows="5" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary transition placeholder-gray-500" placeholder="Tell us about your project or question"></textarea>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-primary focus:ring-primary focus:ring-1 transition placeholder-gray-500 text-white resize-none" placeholder="Tell us about your project or question"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition">
-                        Submit Message
+
+                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                        Send Message
                     </button>
+
+                    <!-- Status Messages -->
+                    <div id="successMessage" class="hidden p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg text-green-300">
+                        ✓ Message sent successfully! We'll get back to you soon.
+                    </div>
+                    <div id="errorMessage" class="hidden p-4 bg-red-500 bg-opacity-20 border border-red-500 rounded-lg text-red-300">
+                        ✗ Error sending message. Please try again.
+                    </div>
                 </form>
             </div>
 
+            <!-- Contact Information -->
             <div class="space-y-8">
+                <!-- Email -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-feather="mail" class="text-primary"></i> Email Us</h2>
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i data-feather="mail" class="text-primary"></i> Email Us
+                    </h2>
                     <a href="mailto:hello@prodigytechdigital.com.ng" class="text-xl text-gray-300 hover:text-primary transition">hello@prodigytechdigital.com.ng</a>
                     <p class="text-gray-400 mt-2">Best for detailed inquiries and proposal requests.</p>
                 </div>
                 
+                <!-- Phone -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-feather="phone" class="text-secondary"></i> Call/WhatsApp</h2>
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i data-feather="phone" class="text-secondary"></i> Call/WhatsApp
+                    </h2>
                     <a href="tel:+2348109881237" class="text-xl text-gray-300 hover:text-secondary transition">+234 810 988 1237</a>
                     <p class="text-gray-400 mt-2">Available for urgent discussions during business hours.</p>
                 </div>
                 
+                <!-- Location & Hours -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-feather="map-pin" class="text-purple-500"></i> Location & Hours</h2>
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i data-feather="map-pin" class="text-purple-500"></i> Location & Hours
+                    </h2>
                     <p class="text-xl font-medium text-gray-300 mb-4">Lagos, Nigeria</p>
                     <div class="space-y-2 text-sm">
                         <div class="flex justify-between">
                             <span class="text-gray-400">Monday - Friday</span>
-                            <span class="font-medium">9:00 AM - 5:00 PM</span>
+                            <span class="font-medium">9:00 AM - 5:00 PM WAT</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-400">Saturday</span>
-                            <span class="font-medium">10:00 AM - 3:00 PM</span>
+                            <span class="font-medium">10:00 AM - 3:00 PM WAT</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-400">Sunday</span>
@@ -82,21 +130,120 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Social Media Handles -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i data-feather="share-2" class="text-primary"></i> Follow Us
+                    </h2>
+                    <p class="text-gray-400 mb-6">Connect with us on social media for updates and insights.</p>
+                    <div class="flex gap-4">
+                        <!-- Facebook -->
+                        <a href="https://facebook.com/prodigytech" target="_blank" rel="noopener noreferrer" class="p-3 bg-gray-900 rounded-lg text-white hover:bg-primary hover:text-gray-900 transition duration-300" title="Facebook">
+                            <i data-feather="facebook" class="w-6 h-6"></i>
+                        </a>
+
+                        <!-- Twitter/X -->
+                        <a href="https://twitter.com/prodigytech" target="_blank" rel="noopener noreferrer" class="p-3 bg-gray-900 rounded-lg text-white hover:bg-primary hover:text-gray-900 transition duration-300" title="Twitter/X">
+                            <i data-feather="twitter" class="w-6 h-6"></i>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://linkedin.com/company/prodigytech" target="_blank" rel="noopener noreferrer" class="p-3 bg-gray-900 rounded-lg text-white hover:bg-primary hover:text-gray-900 transition duration-300" title="LinkedIn">
+                            <i data-feather="linkedin" class="w-6 h-6"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/prodigytech" target="_blank" rel="noopener noreferrer" class="p-3 bg-gray-900 rounded-lg text-white hover:bg-primary hover:text-gray-900 transition duration-300" title="Instagram">
+                            <i data-feather="instagram" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-center">Find Us</h2>
+        <!-- Map Section -->
+        <section class="mb-1">
+            <h2 class="text-3xl font-bold mb-6 text-center">Find Us on the Map</h2>
             <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7171458908753!2d3.3765100000000003!3d6.564590000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8e4e75d048d5%3A0x67a911a37c006771!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7171458908753!2d3.3765100000000003!3d6.564590000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8e4e75d048d5%3A0x67a911a37c006771!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0; border-radius: 0.5rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
             </div>
         </section>
+
     </main>
 
     <custom-footer></custom-footer>
-    <script src="components/navbar.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="script.js"></script>
-    <script>feather.replace();</script>
+
+    <script src="/components/navbar.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/script.js"></script>
+    <script>
+        feather.replace();
+
+        // Prevent double submission
+        let isSubmitting = false;
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Block if already submitting
+            if (isSubmitting) {
+                console.log("Form submission already in progress - blocking duplicate");
+                return;
+            }
+
+            isSubmitting = true;
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            const originalBtnText = submitBtn.textContent;
+
+            // Hide previous messages
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim() || '',
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value.trim()
+            };
+
+            try {
+                const response = await fetch('/api/sendmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    successMsg.classList.remove('hidden');
+                    this.reset();
+                    document.getElementById('name').focus();
+                } else {
+                    errorMsg.textContent = '✗ ' + (result.error || 'Error sending message. Please try again.');
+                    errorMsg.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Form error:', error);
+                errorMsg.textContent = '✗ Failed to send message. Please try again or contact us directly.';
+                errorMsg.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+                isSubmitting = false;
+            }
+        });
+    </script>
 </body>
 </html>

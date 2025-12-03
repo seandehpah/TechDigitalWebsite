@@ -1,0 +1,26 @@
+{
+  "buildCommand": "echo 'Building...'",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.+\\.[a-z]+)$",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.+)\\.html$",
+      "dest": "/$1/"
+    },
+    {
+      "src": "/(.*)/$",
+      "dest": "/$1.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1.html"
+    }
+  ]
+}
